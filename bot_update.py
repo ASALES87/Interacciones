@@ -10,40 +10,46 @@ class MyClient(discord.Client):
     async def on_ready(self):
         print(f'Conectado como {self.user}')
         channel = self.get_channel(CHANNEL_ID)
+        ahora = datetime.now(timezone.utc)
+        limite_3h = ahora - timedelta(hours=3)
         
-        # 1. Definir el límite de tiempo (últimas 3 horas)
-        # Usamos timezone.utc para evitar errores de desfase horario
-        limite_tiempo = datetime.now(timezone.utc) - timedelta(hours=3)
-        
-        # 2. Cargar o crear datos.json
+        # --- 1. GESTIÓN DEL HISTORIAL (datos.json) ---
         if os.path.exists('datos.json'):
             with open('datos.json', 'r', encoding='utf-8') as f:
-                try: 
-                    data = json.load(f)
-                except: 
-                    data = {"messages": []}
+                try: historial = json.load(f)
+                except: historial = {"messages": []}
         else:
-            data = {"messages": []}
+            historial = {"messages": []}
 
-        # 3. Leer mensajes y filtrar por tiempo
-        # Ponemos un límite alto (ej. 200) por seguridad, pero el filtro de tiempo manda
-        async for message in channel.history(limit=200, after=limite_tiempo):
+        # --- 2. GESTIÓN DE LO RECIENTE (reciente.json) ---
+        reciente = {"messages": []}
+
+        # Leer mensajes (traemos suficientes para cubrir las 3h)
+        async for message in channel.history(limit=200):
             if message.embeds:
                 for embed in message.embeds:
+                    msg_time = embed.timestamp.replace(tzinfo=timezone.utc) if embed.timestamp else ahora
                     nueva = {
                         "description": embed.description or "", 
-                        "timestamp": str(embed.timestamp or "")
+                        "timestamp": str(msg_time)
                     }
                     
-                    # Evitar duplicados antes de añadir
-                    if not any(m['embeds'][0]['description'] == nueva['description'] for m in data['messages'] if m.get('embeds')):
-                        data["messages"].append({"embeds": [nueva]})
+                    # Añadir al HISTORIAL si no existe (acumulativo)
+                    if not any(m['embeds'][0]['description'] == nueva['description'] for m in historial['messages'] if m.get('embeds')):
+                        historial["messages"].append({"embeds": [nueva]})
+                    
+                    # Añadir a RECIENTE si está dentro de las 3 horas
+                    if msg_time >= limite_3h:
+                        reciente["messages"].append({"embeds": [nueva]})
 
-        # 4. Guardar los resultados
+        # --- 3. GUARDAR AMBOS ARCHIVOS ---
         with open('datos.json', 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=4)
+            json.dump(historial, f, indent=4)
             
-        print(f"Sincronización completada. Se han revisado mensajes desde: {limite_tiempo}")
+        with open('reciente.json', 'w', encoding='utf-8') as f:
+            json.dump(reciente, f, indent=4)
+            
+        print("Archivos datos.json y reciente.json actualizados.")
         await self.close()
 
 client = MyClient()
