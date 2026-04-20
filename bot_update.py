@@ -4,8 +4,8 @@ import os
 from datetime import datetime
 
 # --- CONFIGURACIÓN ---
-TOKEN = os.getenv('DISCORD_TOKEN')
-CHANNEL_ID = int(os.getenv('DISCORD_CHANNEL_ID'))
+TOKEN = os.getenv('TOKEN_ID')
+CHANNEL_ID = int(os.getenv('CHANNEL_ID'))
 JSON_FILE = 'datos.json'
 
 class MyClient(discord.Client):
