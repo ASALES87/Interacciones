@@ -3,63 +3,56 @@ import json
 import os
 from datetime import datetime
 
-# --- CONFIGURACIÓN ---
 TOKEN = os.getenv('TOKEN_ID')
-CHANNEL_ID = int(os.getenv('CHANNEL_ID'))
+raw_id = os.getenv('CHANNEL_ID')
+CHANNEL_ID = int(raw_id) if raw_id else None
 JSON_FILE = 'datos.json'
 
 class MyClient(discord.Client):
     async def on_ready(self):
-        print(f'Logueado como {self.user}')
+        print(f'Conectado como {self.user}')
         channel = self.get_channel(CHANNEL_ID)
         
-        # 1. CARGAR DATOS EXISTENTES (El historial que subiste manualmente)
+        # --- CARGA SEGURA ---
         if os.path.exists(JSON_FILE):
-            try:
-                with open(JSON_FILE, 'r', encoding='utf-8') as f:
+            with open(JSON_FILE, 'r', encoding='utf-8') as f:
+                try:
                     historial = json.load(f)
-            except:
-                historial = {"messages": []}
+                    print(f"✅ Historial cargado: {len(historial.get('messages', []))} registros previos.")
+                except:
+                    historial = {"messages": []}
         else:
+            print("⚠️ No se encontró datos.json, creando uno nuevo.")
             historial = {"messages": []}
 
-        # Creamos un set de IDs para no repetir mensajes que ya tenemos
-        ids_viejos = {m['id'] for m in historial.get('messages', [])}
+        ids_viejos = {str(m['id']) for m in historial.get('messages', [])}
         
-        # 2. DESCARGAR MENSAJES RECIENTES DE DISCORD
-        # He puesto un límite de 200, pero como filtramos IDs, no duplicará nada
+        # --- EXTRACCIÓN ---
         nuevos_mensajes = []
         async for message in channel.history(limit=200):
-            if message.id not in ids_viejos:
-                # Convertimos el mensaje a formato diccionario
+            # Comparamos IDs como strings para evitar errores
+            if str(message.id) not in ids_viejos:
                 msg_data = {
-                    "id": message.id,
+                    "id": str(message.id),
                     "timestamp": message.created_at.isoformat(),
                     "content": message.content,
                     "embeds": [e.to_dict() for e in message.embeds]
                 }
                 nuevos_mensajes.append(msg_data)
 
-        # 3. UNIR Y GUARDAR (Sin borrar lo antiguo)
+        # --- FUSIÓN ---
         if nuevos_mensajes:
-            # Añadimos los nuevos al principio o al final (aquí al final)
             historial['messages'].extend(nuevos_mensajes)
-            
-            # Ordenar por fecha para que el JSON esté limpio
+            # Ordenar por fecha (el más viejo arriba)
             historial['messages'].sort(key=lambda x: x['timestamp'])
 
             with open(JSON_FILE, 'w', encoding='utf-8') as f:
                 json.dump(historial, f, indent=4, ensure_ascii=False)
-            
-            print(f"✅ Éxito: Se han añadido {len(nuevos_mensajes)} mensajes nuevos.")
+            print(f"🚀 Éxito: {len(nuevos_mensajes)} mensajes nuevos añadidos.")
         else:
-            print("p No hay mensajes nuevos desde la última ejecución.")
+            print("⌛ No hay nada nuevo que añadir.")
 
         await self.close()
 
-# Ejecutar el bot
-if TOKEN and CHANNEL_ID:
-    client = MyClient(intents=discord.Intents.default())
-    client.run(TOKEN)
-else:
-    print("❌ Error: Faltan las variables de entorno TOKEN o CHANNEL_ID")
+client = MyClient(intents=discord.Intents.default())
+client.run(TOKEN)
