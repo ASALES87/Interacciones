@@ -1,8 +1,9 @@
 name: Auto Update DayZ Data
+
 on:
   schedule:
-    - cron: '*/30 * * * *'
-  workflow_dispatch:
+    - cron: '*/30 * * * *' # Se ejecuta automáticamente cada 30 minutos
+  workflow_dispatch:      # Permite ejecutarlo manualmente con el botón "Run workflow"
 
 jobs:
   build:
@@ -17,7 +18,7 @@ jobs:
           python-version: '3.9'
 
       - name: Instalar dependencias
-        run: pip install discord.py-self pandas
+        run: pip install discord.py-self pandas huggingface_hub
 
       - name: Ejecutar script de Discord
         env:
@@ -25,10 +26,16 @@ jobs:
           CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
         run: python bot_update.py
 
-      - name: Subir cambios a GitHub
+      - name: Subir cambios a GitHub (Copia de seguridad)
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add datos.json
           git commit -m "Update datos.json desde Discord" || exit 0
           git push
+
+      - name: Inyectar datos en Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          python -c "from huggingface_hub import HfApi; api = HfApi(); api.upload_file(path_or_fileobj='datos.json', path_in_repo='datos.json', repo_id='ASALES87/NOMBRE_DE_TU_SPACE', repo_type='space', token='${{ secrets.HF_TOKEN }}')"
