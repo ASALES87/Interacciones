@@ -38,4 +38,4 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          python -c "from huggingface_hub import HfApi; api = HfApi(); api.upload_file(path_or_fileobj='datos.json', path_in_repo='datos.json', repo_id='ASALES87/NOMBRE_DE_TU_SPACE', repo_type='space', token='${{ secrets.HF_TOKEN }}')"
+          python -c "from huggingface_hub import HfApi; api = HfApi(); api.upload_file(path_or_fileobj='datos.json', path_in_repo='datos.json', repo_id='ASALES87/dayz-intel-map', repo_type='space', token='${{ secrets.HF_TOKEN }}')"
