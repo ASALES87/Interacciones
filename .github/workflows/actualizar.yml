@@ -1,0 +1,36 @@
+name: Auto Update DayZ Data
+on:
+  schedule:
+    - cron: '*/30 * * * *' # Se ejecutará solo cada 30 min
+  workflow_dispatch:      # Este activa el botón para que tú lo des cuando quieras
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install discord.py-self pandas
+
+      - name: Ejecutar script de Discord
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+        run: python bot_update.py
+
+      - name: Subir cambios a GitHub
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add datos.json
+          git commit -m "Update datos.json desde Discord" || exit 0
+          git push
