@@ -47,4 +47,4 @@ class MyClient(discord.Client):
         await self.close()
 
 client = MyClient()
-client.run(TOKEN, bot=False)
+client.run(TOKEN)
