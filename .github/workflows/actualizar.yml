@@ -2,8 +2,8 @@ name: Auto Update DayZ Data
 
 on:
   schedule:
-    - cron: '*/30 * * * *' # Se ejecuta cada 30 minutos
-  workflow_dispatch:      # Botón manual
+    - cron: '*/30 * * * *' # Ejecuta cada 30 minutos
+  workflow_dispatch:      # Ejecuta manual
 
 jobs:
   build:
@@ -12,7 +12,7 @@ jobs:
       - name: Checkout código
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # IMPORTANTE: Descarga todo el historial para no perder datos viejos
+          fetch-depth: 0 # Trae todo el historial para no borrar el pasado
 
       - name: Configurar Python
         uses: actions/setup-python@v4
@@ -24,17 +24,17 @@ jobs:
 
       - name: Ejecutar script de Discord
         env:
-          TOKEN_ID: ${{ secrets.DISCORD_TOKEN }}   # Verifica que en Secrets se llame DISCORD_TOKEN
+          TOKEN_ID: ${{ secrets.DISCORD_TOKEN }}
           CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
         run: python bot_update.py
 
-      - name: Subir cambios a GitHub
+      - name: Guardar cambios en GitHub
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           git add datos.json
-          git commit -m "Update datos.json [Skip CI]" || echo "Sin cambios para commitear"
-          git push origin main || echo "No se pudo hacer push a GitHub"
+          git commit -m "Update datos.json [Skip CI]" || echo "Sin cambios"
+          git push origin main || echo "No hay cambios para subir"
 
       - name: Inyectar datos en Hugging Face
         env:
