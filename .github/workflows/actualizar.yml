@@ -2,37 +2,39 @@ name: Auto Update DayZ Data
 
 on:
   schedule:
-    - cron: '*/30 * * * *' # Se ejecuta automáticamente cada 30 minutos
-  workflow_dispatch:      # Permite ejecutarlo manualmente con el botón "Run workflow"
+    - cron: '*/30 * * * *' # Se ejecuta cada 30 minutos
+  workflow_dispatch:      # Botón manual
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # IMPORTANTE: Descarga todo el historial para no perder datos viejos
 
       - name: Configurar Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.10'
 
       - name: Instalar dependencias
-        run: pip install discord.py-self pandas huggingface_hub
+        run: pip install discord.py pandas huggingface_hub
 
       - name: Ejecutar script de Discord
         env:
-          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          TOKEN_ID: ${{ secrets.DISCORD_TOKEN }}   # Verifica que en Secrets se llame DISCORD_TOKEN
           CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
         run: python bot_update.py
 
-      - name: Subir cambios a GitHub (Copia de seguridad)
+      - name: Subir cambios a GitHub
         run: |
           git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.name "GitHub Action Bot"
           git add datos.json
-          git commit -m "Update datos.json desde Discord" || exit 0
-          git push
+          git commit -m "Update datos.json [Skip CI]" || echo "Sin cambios para commitear"
+          git push origin main || echo "No se pudo hacer push a GitHub"
 
       - name: Inyectar datos en Hugging Face
         env:
