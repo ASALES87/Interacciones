@@ -2,7 +2,7 @@ name: Auto Update DayZ Data (SelfBot)
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/2 * * * *'
   workflow_dispatch:
 
 jobs:
