@@ -2,8 +2,8 @@ name: Auto Update DayZ Data (SelfBot)
 
 on:
   schedule:
-    - cron: '*/2 * * * *' # Se ejecuta cada 2 minutos
-  workflow_dispatch: # Permite ejecutarlo manualmente desde GitHub
+    - cron: '*/2 * * * *'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -43,17 +43,16 @@ jobs:
           python -c "
           from huggingface_hub import HfApi
           import os
-          
           api = HfApi()
           try:
               api.upload_file(
                   path_or_fileobj='datos.json',
                   path_in_repo='datos.json',
-                  repo_id='ASALES87/Interacciones',
+                  repo_id='TU_USUARIO/TU_SPACE',
                   repo_type='space',
                   token=os.environ['HF_TOKEN']
               )
-              print('✅ Archivo subido con éxito a Hugging Face')
+              print('✅ Sincronizado con Hugging Face')
           except Exception as e:
-              print(f'❌ Error al subir a HF: {e}')
+              print(f'❌ Error: {e}')
           "
