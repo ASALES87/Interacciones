@@ -5,6 +5,9 @@ on:
     - cron: '*/5 * * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,8 +36,12 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
           git add datos.json
-          git commit -m "Update datos.json [Skip CI]" || echo "Sin cambios para commitear"
-          git push origin main || echo "No hay cambios nuevos para subir a GitHub"
+          if git diff --staged --quiet; then
+            echo "Sin cambios para commitear"
+          else
+            git commit -m "Update datos.json [Skip CI]"
+            git push origin main
+          fi
 
       - name: Inyectar datos en Hugging Face
         env:
@@ -46,7 +53,6 @@ jobs:
           import time
           
           api = HfApi()
-          # Esperamos 2 segundos para asegurar que el archivo está cerrado
           time.sleep(2)
           
           try:
