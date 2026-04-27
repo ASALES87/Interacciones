@@ -1,42 +1,4 @@
-name: Auto Update DayZ Data (SelfBot)
-
-on:
-  schedule:
-    - cron: '*/2 * * * *'
-  workflow_dispatch:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Configurar Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Instalar dependencias
-        run: pip install discord.py-self pandas huggingface_hub
-
-      - name: Ejecutar script de Discord
-        env:
-          TOKEN_ID: ${{ secrets.DISCORD_TOKEN }}
-          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
-        run: python bot_update.py
-
-      - name: Guardar cambios en GitHub
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action Bot"
-          git add datos.json
-          git commit -m "Update datos.json [Skip CI]" || echo "Sin cambios"
-          git push origin main || echo "No se pudo subir a GitHub"
-
-      - name: Inyectar datos en Hugging Face
+- name: Inyectar datos en Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
@@ -48,12 +10,13 @@ jobs:
               api.upload_file(
                   path_or_fileobj='datos.json',
                   path_in_repo='datos.json',
-                  repo_id='Salesao87/dayz-intel-map', # <--- CAMBIA ESTO (Ej: 'Anarchy/Vanilla-Map')
+                  repo_id='Salesao87/dayz-intel-map',
                   repo_type='space',
-                  token=os.environ['HF_TOKEN']
+                  token=os.environ['HF_TOKEN'],
+                  commit_message='Update data [Skip LFS]' # Esto ayuda a veces
               )
               print('✅ Sincronizado correctamente')
           except Exception as e:
-              print(f'❌ Error inyectando: {e}')
+              print(f'❌ Error: {e}')
               exit(1)
           "
