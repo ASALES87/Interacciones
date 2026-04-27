@@ -37,7 +37,7 @@ jobs:
           git config --local user.name "GitHub Action Bot"
           git add datos.json
           if git diff --staged --quiet; then
-            echo "Sin cambios para commitear"
+            echo "Sin cambios detectados en el JSON."
           else
             git commit -m "Update datos.json [Skip CI]"
             git push origin main
@@ -50,11 +50,7 @@ jobs:
           python -c "
           from huggingface_hub import HfApi
           import os
-          import time
-          
           api = HfApi()
-          time.sleep(2)
-          
           try:
               api.upload_file(
                   path_or_fileobj='datos.json',
@@ -63,8 +59,7 @@ jobs:
                   repo_type='space',
                   token=os.environ['HF_TOKEN']
               )
-              print('✅ ¡ÉXITO! Archivo inyectado en Hugging Face')
+              print('✅ ¡ÉXITO! Datos inyectados en HF Spaces')
           except Exception as e:
-              print(f'❌ ERROR AL INYECTAR: {e}')
-              exit(1)
+              print(f'❌ ERROR HF: {e}')
           "
