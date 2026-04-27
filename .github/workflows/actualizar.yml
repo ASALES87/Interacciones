@@ -49,7 +49,7 @@ jobs:
               api.upload_file(
                   path_or_fileobj='datos.json',
                   path_in_repo='datos.json',
-                  repo_id='TU_USUARIO/TU_SPACE_NAME',
+                  repo_id='ASALES87/Interacciones',
                   repo_type='space',
                   token=os.environ['HF_TOKEN']
               )
