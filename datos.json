@@ -13316,6 +13316,23 @@
                     "timestamp": "2026-04-28T15:01:30+00:00"
                 }
             ]
+        },
+        {
+            "id": 1498720390682513488,
+            "content": "",
+            "timestamp": "2026-04-28T16:19:46.017000+00:00",
+            "embeds": [
+                {
+                    "description": "<:dpp_skull_white:1263878280600096809> • **Player Kill** • **<t:1777392758:T>**\n**Jewelsblue** was killed by **KAURA-MAITO**.\n\n<:dpp_between_horizontal_start_whi:1263876829622829207> • **Details**\n- Weapon: **AUR AX**\n- Weapon Extra: **Bullet_556x45**\n- Distance: **0.935966**m\n- Body Part: **Head**\n- Damage: **107.354**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **KAURA-MAITO**\n**2.14 K/D** | **15 Kills**\n**5 x Killstreak** | **#226,284 Global**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **Jewelsblue**\n**2.0 K/D** | **1 PvP Death**\n**1 x Deathstreak** | **#4,162,390 Global**\n\n<:dpp_timer_white:1263878288582115409> • **Time Alive (Real Time)**\n**1 week, 6 days, 5 hours, 49 minutes, and 50 seconds**\n\n<:dpp_map_white:1263877473322401944> • **Locations**\n**[Victim](https://www.izurvive.com/chernarusplussatmap/#location=6543.2;14854.3;8) *(Near Krasnoye)*\n[Killer](https://www.izurvive.com/chernarusplussatmap/#location=6542.3;14854.1;8) *(Near Krasnoye)***",
+                    "title": null,
+                    "timestamp": "2026-04-28T16:12:38+00:00"
+                },
+                {
+                    "description": "<:dpp_skull_white:1263878280600096809> • **Player Kill** • **<t:1777392973:T>**\n**ttv\\_Easyclapz10** was killed by **kaos\\_destroy1312**.\n\n<:dpp_between_horizontal_start_whi:1263876829622829207> • **Details**\n- Weapon: **KA-74**\n- Weapon Extra: **Bullet_545x39Tracer**\n- Distance: **4.30394**m\n- Body Part: **LeftLeg**\n- Damage: **96.0304**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **kaos\\_destroy1312**\n**1.49 K/D** | **158 Kills**\n**3 x Killstreak** | **#90,630 Global**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **ttv\\_Easyclapz10**\n**2.19 K/D** | **43 PvP Deaths**\n**1 x Deathstreak** | **#40,488 Global**\n\n<:dpp_timer_white:1263878288582115409> • **Time Alive (Real Time)**\n**18 hours, 26 minutes, and 57 seconds**\n\n<:dpp_map_white:1263877473322401944> • **Locations**\n**[Victim](https://www.izurvive.com/chernarusplussatmap/#location=2519.3;5143.6;8) *(Near Zeleno Military)*\n[Killer](https://www.izurvive.com/chernarusplussatmap/#location=2523.5;5142.6;8) *(Near Zeleno Military)***",
+                    "title": null,
+                    "timestamp": "2026-04-28T16:16:13+00:00"
+                }
+            ]
         }
     ]
 }
