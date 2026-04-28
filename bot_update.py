@@ -5,6 +5,7 @@ import os
 
 TOKEN = os.getenv("TOKEN_ID")
 CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
+FILE_PATH = 'datos.json'
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -16,29 +17,56 @@ class MyClient(discord.Client):
             await self.close()
             return
 
-        messages_data = []
+        # 1. CARGAR DATOS EXISTENTES (EL HISTÓRICO)
+        historial_mensajes = []
+        if os.path.exists(FILE_PATH):
+            try:
+                with open(FILE_PATH, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    historial_mensajes = data.get('messages', [])
+                print(f"📖 Historial cargado: {len(historial_mensajes)} mensajes previos.")
+            except Exception as e:
+                print(f"⚠️ No se pudo leer el historial (archivo corrupto o vacío): {e}")
+
+        # Crear un set de IDs para evitar duplicados
+        ids_existentes = {m.get('id') for m in historial_mensajes if 'id' in m}
+
+        # 2. LEER MENSAJES NUEVOS DE DISCORD
         print(f"Reading messages from channel: {channel.name}")
-
-        async for message in channel.history(limit=100):
-            # Guardamos el mensaje completo para que el app.py lo procese
-            msg_dict = {
-                "content": message.content,
-                "timestamp": message.created_at.isoformat(),
-                "embeds": [
-                    {
-                        "description": e.description,
-                        "title": e.title,
-                        "timestamp": e.timestamp.isoformat() if e.timestamp else None
-                    } for e in message.embeds
-                ]
-            }
-            messages_data.append(msg_dict)
-
-        with open('datos.json', 'w', encoding='utf-8') as f:
-            json.dump({"messages": messages_data}, f, indent=4, ensure_ascii=False)
+        mensajes_nuevos_contador = 0
         
-        print(f"✅ Archivo datos.json generado con {len(messages_data)} mensajes.")
+        # Quitamos el límite o lo subimos mucho para recuperar lo perdido
+        # La primera vez leerá mucho, luego solo los nuevos
+        async for message in channel.history(limit=500): 
+            if message.id not in ids_existentes:
+                msg_dict = {
+                    "id": message.id,  # IMPORTANTE guardar el ID para no duplicar
+                    "content": message.content,
+                    "timestamp": message.created_at.isoformat(),
+                    "embeds": [
+                        {
+                            "description": e.description,
+                            "title": e.title,
+                            "timestamp": e.timestamp.isoformat() if e.timestamp else None
+                        } for e in message.embeds
+                    ]
+                }
+                historial_mensajes.append(msg_dict)
+                ids_existentes.add(message.id)
+                mensajes_nuevos_contador += 1
+
+        # 3. ORDENAR POR FECHA (Antiguos primero, nuevos al final)
+        historial_mensajes.sort(key=lambda x: x['timestamp'])
+
+        # 4. GUARDAR TODO (ACUMULADO)
+        with open(FILE_PATH, 'w', encoding='utf-8') as f:
+            json.dump({"messages": historial_mensajes}, f, indent=4, ensure_ascii=False)
+        
+        print(f"✅ Proceso completado.")
+        print(f"✨ Mensajes nuevos añadidos: {mensajes_nuevos_contador}")
+        print(f"📊 Total en el archivo histórico: {len(historial_mensajes)}")
+        
         await self.close()
 
-client = MyClient()
+client = MyClient(intents=discord.Intents.default())
 client.run(TOKEN)
