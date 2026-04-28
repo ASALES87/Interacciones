@@ -13253,6 +13253,35 @@
                     "timestamp": "2026-04-28T10:57:31+00:00"
                 }
             ]
+        },
+        {
+            "id": 1498673880640786543,
+            "content": "",
+            "timestamp": "2026-04-28T13:14:57.159000+00:00",
+            "embeds": [
+                {
+                    "description": "<:dpp_skull_white:1263878280600096809> • **Player Kill** • **<t:1777381612:T>**\n**Agnieszka8798** was killed by **presidentti\\_007**.\n\n<:dpp_between_horizontal_start_whi:1263876829622829207> • **Details**\n- Weapon: **M70 Tundra**\n- Weapon Extra: **Bullet_308Win**\n- Distance: **178.904**m\n- Body Part: **Head**\n- Damage: **32.8505**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **presidentti\\_007**\n**0.73 K/D** | **11 Kills**\n**4 x Killstreak** | **#234,011 Global**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **Agnieszka8798**\n**0.0 K/D** | **1 PvP Death**\n**1 x Deathstreak** | **#124,152 Global**\n\n<:dpp_timer_white:1263878288582115409> • **Time Alive (Real Time)**\n**5 days, 16 hours, 23 minutes, and 25 seconds**\n\n<:dpp_map_white:1263877473322401944> • **Locations**\n**[Victim](https://www.izurvive.com/chernarusplussatmap/#location=523.8;11284.7;8) *(Near Biathlon Arena)*\n[Killer](https://www.izurvive.com/chernarusplussatmap/#location=518.8;11106.0;8) *(Near Biathlon Arena)***",
+                    "title": null,
+                    "timestamp": "2026-04-28T13:06:52+00:00"
+                },
+                {
+                    "description": "<:dpp_skull_white:1263878280600096809> • **Player Kill** • **<t:1777381793:T>**\n**Ur\\_mooie365** was killed by **temp-1582562**.\n\n<:dpp_between_horizontal_start_whi:1263876829622829207> • **Details**\n- Weapon: **KA-74**\n- Weapon Extra: **Bullet_545x39Tracer**\n- Distance: **6.4791**m\n- Body Part: **Torso**\n- Damage: **79.6963**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **temp-1582562**\n**1.29 K/D** | **54 Kills**\n**1 x Killstreak** | **#495,736 Global**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **Ur\\_mooie365**\n**0.0 K/D** | **1 PvP Death**\n**1 x Deathstreak** | **#1,123,756 Global**\n\n<:dpp_timer_white:1263878288582115409> • **Time Alive (Real Time)**\n**1 hour, 54 minutes, and 32 seconds**\n\n<:dpp_map_white:1263877473322401944> • **Locations**\n**[Victim](https://www.izurvive.com/chernarusplussatmap/#location=8026.6;14646.9;8) *(Near Troitskoe Military Base)*\n[Killer](https://www.izurvive.com/chernarusplussatmap/#location=8025.9;14653.3;8) *(Near Troitskoe Military Base)***",
+                    "title": null,
+                    "timestamp": "2026-04-28T13:09:53+00:00"
+                }
+            ]
+        },
+        {
+            "id": 1498683228796489898,
+            "content": "",
+            "timestamp": "2026-04-28T13:52:05.933000+00:00",
+            "embeds": [
+                {
+                    "description": "<:dpp_skull_white:1263878280600096809> • **Player Kill** • **<t:1777383286:T>**\n**DarloSnr** was killed by **x\\_GingerAnt\\_x**.\n\n<:dpp_between_horizontal_start_whi:1263876829622829207> • **Details**\n- Weapon: **DMR**\n- Weapon Extra: **Bullet_308Win**\n- Distance: **55.1113**m\n- Body Part: **Torso**\n- Damage: **150.0**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **x\\_GingerAnt\\_x**\n**2.31 K/D** | **30 Kills**\n**2 x Killstreak** | **#137,087 Global**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **DarloSnr**\n**0.73 K/D** | **51 PvP Deaths**\n**1 x Deathstreak** | **#482,924 Global**\n\n<:dpp_timer_white:1263878288582115409> • **Time Alive (Real Time)**\n**43 minutes and 5 seconds**\n\n<:dpp_map_white:1263877473322401944> • **Locations**\n**[Victim](https://www.izurvive.com/chernarusplussatmap/#location=686.0;1861.6;8) *(Near Tikhiyzaliv Military)*\n[Killer](https://www.izurvive.com/chernarusplussatmap/#location=672.1;1914.4;8) *(Near Tikhiyzaliv Military)***",
+                    "title": null,
+                    "timestamp": "2026-04-28T13:34:46+00:00"
+                }
+            ]
         }
     ]
 }
