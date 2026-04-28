@@ -13229,6 +13229,30 @@
                     "timestamp": "2026-04-28T05:58:56+00:00"
                 }
             ]
+        },
+        {
+            "id": 1498625792945557596,
+            "content": "",
+            "timestamp": "2026-04-28T10:03:52.159000+00:00",
+            "embeds": [
+                {
+                    "description": "<:dpp_skull_white:1263878280600096809> • **Player Kill** • **<t:1777369454:T>**\n**seanwhite12-** was killed by **RPottzyy**.\n\n<:dpp_between_horizontal_start_whi:1263876829622829207> • **Details**\n- Weapon: **CR-527**\n- Weapon Extra: **Bullet_762x39**\n- Distance: **78.4851**m\n- Body Part: **Head**\n- Damage: **106.957**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **RPottzyy**\n**0.8 K/D** | **8 Kills**\n**1 x Killstreak** | **#4,413,243 Global**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **seanwhite12-**\n**0.0 K/D** | **3 PvP Deaths**\n**3 x Deathstreak** | **#3,700,341 Global**\n\n<:dpp_timer_white:1263878288582115409> • **Time Alive (Real Time)**\n**1 week, 4 days, 1 hour, and 2 seconds**\n\n<:dpp_map_white:1263877473322401944> • **Locations**\n**[Victim](https://www.izurvive.com/chernarusplussatmap/#location=7949.5;14620.7;8) *(Near Troitskoe Military Base)*\n[Killer](https://www.izurvive.com/chernarusplussatmap/#location=8027.6;14625.1;8) *(Near Troitskoe Military Base)***",
+                    "title": null,
+                    "timestamp": "2026-04-28T09:44:14+00:00"
+                }
+            ]
+        },
+        {
+            "id": 1498640875327193098,
+            "content": "",
+            "timestamp": "2026-04-28T11:03:48.079000+00:00",
+            "embeds": [
+                {
+                    "description": "<:dpp_skull_white:1263878280600096809> • **Player Kill** • **<t:1777373851:T>**\n**packme1or2** was killed by **random\\_guy1224**.\n\n<:dpp_between_horizontal_start_whi:1263876829622829207> • **Details**\n- Weapon: **P1**\n- Weapon Extra: **Bullet_9x19**\n- Distance: **2.90396**m\n- Body Part: **Torso**\n- Damage: **34.559**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **random\\_guy1224**\n**1.0 K/D** | **1 Kill**\n**1 x Killstreak** | **#1,123,739 Global**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **packme1or2**\n**0.0 K/D** | **1 PvP Death**\n**1 x Deathstreak** | **#3,457,114 Global**\n\n<:dpp_timer_white:1263878288582115409> • **Time Alive (Real Time)**\n**50 minutes and 58 seconds**\n\n<:dpp_map_white:1263877473322401944> • **Locations**\n**[Victim](https://www.izurvive.com/chernarusplussatmap/#location=6965.5;7683.0;8) *(Near Novy Sobor)*\n[Killer](https://www.izurvive.com/chernarusplussatmap/#location=6968.4;7682.5;8) *(Near Novy Sobor)***",
+                    "title": null,
+                    "timestamp": "2026-04-28T10:57:31+00:00"
+                }
+            ]
         }
     ]
 }
