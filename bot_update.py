@@ -68,5 +68,5 @@ class MyClient(discord.Client):
         
         await self.close()
 
-client = MyClient(intents=discord.Intents.default())
+client = MyClient()
 client.run(TOKEN)
