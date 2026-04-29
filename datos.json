@@ -14477,6 +14477,18 @@
                     "timestamp": "2026-04-29T04:31:31+00:00"
                 }
             ]
+        },
+        {
+            "id": 1498961511576768522,
+            "content": "",
+            "timestamp": "2026-04-29T08:17:53.718000+00:00",
+            "embeds": [
+                {
+                    "description": "<:dpp_skull_white:1263878280600096809> • **Player Kill** • **<t:1777450361:T>**\n**Goreodon** was killed by **ZoneRouge13120**.\n\n<:dpp_between_horizontal_start_whi:1263876829622829207> • **Details**\n- Weapon: **Mosin 91/30**\n- Weapon Extra: **Bullet_762x54**\n- Distance: **19.768**m\n- Body Part: **Torso**\n- Damage: **144.871**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **ZoneRouge13120**\n**1.5 K/D** | **3 Kills**\n**1 x Killstreak** | **#136,357 Global**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **Goreodon**\n**0.5 K/D** | **2 PvP Deaths**\n**1 x Deathstreak** | **#952,348 Global**\n\n<:dpp_timer_white:1263878288582115409> • **Time Alive (Real Time)**\n**3 days, 11 hours, 15 minutes, and 57 seconds**\n\n<:dpp_map_white:1263877473322401944> • **Locations**\n**[Victim](https://www.izurvive.com/chernarusplussatmap/#location=10576.6;14397.6;8) *(Near Grozovyedoly)*\n[Killer](https://www.izurvive.com/chernarusplussatmap/#location=10557.6;14392.3;8) *(Near Grozovyedoly)***",
+                    "title": null,
+                    "timestamp": "2026-04-29T08:12:41+00:00"
+                }
+            ]
         }
     ]
 }
