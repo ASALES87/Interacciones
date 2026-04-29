@@ -37,7 +37,7 @@ class MyClient(discord.Client):
         
         # Quitamos el límite o lo subimos mucho para recuperar lo perdido
         # La primera vez leerá mucho, luego solo los nuevos
-        async for message in channel.history(limit=500): 
+        async for message in channel.history(limit=None)
             if message.id not in ids_existentes:
                 msg_dict = {
                     "id": message.id,  # IMPORTANTE guardar el ID para no duplicar
