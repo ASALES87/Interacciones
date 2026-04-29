@@ -14453,6 +14453,30 @@
                     "timestamp": "2026-04-29T02:12:11+00:00"
                 }
             ]
+        },
+        {
+            "id": 1498902473593847970,
+            "content": "",
+            "timestamp": "2026-04-29T04:23:17.966000+00:00",
+            "embeds": [
+                {
+                    "description": "<:dpp_skull_white:1263878280600096809> • **Player Kill** • **<t:1777436405:T>**\n**King\\_Yukm0uth** was killed by **running\\_cage80**.\n\n<:dpp_between_horizontal_start_whi:1263876829622829207> • **Details**\n- Weapon: **CR-527**\n- Weapon Extra: **Bullet_762x39**\n- Distance: **154.633**m\n- Body Part: **Head**\n- Damage: **95.3386**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **running\\_cage80**\n**1.0 K/D** | **1 Kill**\n**1 x Killstreak** | **#3,520,124 Global**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **King\\_Yukm0uth**\n**1.14 K/D** | **7 PvP Deaths**\n**1 x Deathstreak** | **#4,548,505 Global**\n\n<:dpp_timer_white:1263878288582115409> • **Time Alive (Real Time)**\n**1 week, 3 days, 5 hours, 1 minute, and 39 seconds**\n\n<:dpp_map_white:1263877473322401944> • **Locations**\n**[Victim](https://www.izurvive.com/chernarusplussatmap/#location=4202.8;10987.8;8) *(Near Bashnya Military)*\n[Killer](https://www.izurvive.com/chernarusplussatmap/#location=4357.0;10978.2;8) *(Near North West Airfield)***",
+                    "title": null,
+                    "timestamp": "2026-04-29T04:20:05+00:00"
+                }
+            ]
+        },
+        {
+            "id": 1498908615078183034,
+            "content": "",
+            "timestamp": "2026-04-29T04:47:42.210000+00:00",
+            "embeds": [
+                {
+                    "description": "<:dpp_skull_white:1263878280600096809> • **Player Kill** • **<t:1777437091:T>**\n**running\\_cage80** was killed by **The\\_Backpack17**.\n\n<:dpp_between_horizontal_start_whi:1263876829622829207> • **Details**\n- Weapon: **KA-74**\n- Weapon Extra: **Bullet_545x39**\n- Distance: **12.6302**m\n- Body Part: **Head**\n- Damage: **19.8898**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **The\\_Backpack17**\n**2.25 K/D** | **27 Kills**\n**3 x Killstreak** | **#99,816 Global**\n\n<:dpp_gantt_chart_white:1263877457409216615> • **running\\_cage80**\n**1.0 K/D** | **1 PvP Death**\n**1 x Deathstreak** | **#1,118,688 Global**\n\n<:dpp_timer_white:1263878288582115409> • **Time Alive (Real Time)**\n**16 hours, 18 minutes, and 6 seconds**\n\n<:dpp_map_white:1263877473322401944> • **Locations**\n**[Victim](https://www.izurvive.com/chernarusplussatmap/#location=4141.6;11216.5;8) *(Near Bashnya Military)*\n[Killer](https://www.izurvive.com/chernarusplussatmap/#location=4135.6;11227.6;8) *(Near Bashnya Military)***",
+                    "title": null,
+                    "timestamp": "2026-04-29T04:31:31+00:00"
+                }
+            ]
         }
     ]
 }
